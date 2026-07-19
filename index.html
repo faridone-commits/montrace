@@ -50,47 +50,23 @@
     .feature h3{font-size:17px;margin-bottom:8px;color:#1a1a2e}
     .feature p{font-size:13px;color:#666}
 
-    /* ── CAROUSEL / TUTO ANIMÉ ── */
-    .carousel{position:relative;max-width:800px;margin:0 auto;overflow:hidden;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.12)}
-    .carousel-track{display:flex;will-change:transform;animation:scroll 28s infinite}
-    .carousel-slide{min-width:100%;display:flex;align-items:center;background:#fff}
-    .carousel-slide img{width:55%;max-height:400px;object-fit:cover;display:block}
-    .carousel-text{padding:30px;width:45%;flex-shrink:0}
-    .carousel-text .step{
+    /* ── TUTO ÉTAPES STATIQUE ── */
+    .steps-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:960px;margin:0 auto
+    }
+    .step-card{
+      background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);
+      transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column
+    }
+    .step-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
+    .step-card img{width:100%;height:200px;object-fit:cover;display:block}
+    .step-card .body{padding:20px;flex:1;display:flex;flex-direction:column}
+    .step-card .badge{
       display:inline-block;background:#e67e22;color:#fff;padding:3px 12px;border-radius:20px;
-      font-size:11px;font-weight:700;margin-bottom:8px
+      font-size:11px;font-weight:700;margin-bottom:8px;align-self:flex-start
     }
-    .carousel-text h3{font-size:18px;color:#1a1a2e;margin-bottom:8px}
-    .carousel-text p{font-size:13px;color:#666;line-height:1.6}
-
-    @keyframes scroll{
-      0%,10%{transform:translateX(0)}
-      12.5%,22.5%{transform:translateX(-100%)}
-      25%,35%{transform:translateX(-200%)}
-      37.5%,47.5%{transform:translateX(-300%)}
-      50%,60%{transform:translateX(-400%)}
-      62.5%,72.5%{transform:translateX(-500%)}
-      75%,85%{transform:translateX(-600%)}
-      87.5%,97.5%{transform:translateX(-700%)}
-      100%{transform:translateX(0)}
-    }
-
-    .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
-    .carousel-dots span{
-      width:10px;height:10px;border-radius:50%;background:#ccc;animation:dot 28s infinite
-    }
-    .carousel-dots span:nth-child(1){animation-delay:0s}
-    .carousel-dots span:nth-child(2){animation-delay:3.5s}
-    .carousel-dots span:nth-child(3){animation-delay:7s}
-    .carousel-dots span:nth-child(4){animation-delay:10.5s}
-    .carousel-dots span:nth-child(5){animation-delay:14s}
-    .carousel-dots span:nth-child(6){animation-delay:17.5s}
-    .carousel-dots span:nth-child(7){animation-delay:21s}
-    .carousel-dots span:nth-child(8){animation-delay:24.5s}
-    @keyframes dot{
-      0%,10%{background:#e67e22;transform:scale(1.3)}
-      12.5%,100%{background:#ccc;transform:scale(1)}
-    }
+    .step-card h3{font-size:17px;color:#1a1a2e;margin-bottom:6px}
+    .step-card p{font-size:13px;color:#666;line-height:1.6;flex:1}
 
     /* ── MOCKUP ── */
     .mockup-area{text-align:center}
@@ -151,9 +127,7 @@
       .pricing .price{font-size:38px}
       section{padding:50px 16px}
       section h2{font-size:24px}
-      .carousel-slide{flex-direction:column}
-      .carousel-slide img{width:100%;max-height:220px}
-      .carousel-text{width:100%;padding:20px}
+      .steps-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -216,80 +190,74 @@
   </div>
 </section>
 
-<!-- TUTORIEL ANIME -->
+<!-- TUTO ÉTAPES -->
 <section id="tuto">
   <h2>Comment ca marche</h2>
-  <div class="carousel">
-    <div class="carousel-track">
-      <div class="carousel-slide">
-        <img src="step1.png" alt="Interface">
-        <div class="carousel-text">
-          <span class="step">Etape 1</span>
-          <h3>Lancez l'application</h3>
-          <p>L'interface s'ouvre sur l'atelier de trace technique : barre d'outils, panneau calques, zone de dessin et parametres a droite.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="step2.png" alt="Creation">
-        <div class="carousel-text">
-          <span class="step">Etape 2</span>
-          <h3>Creez un nouveau trace</h3>
-          <p>Cliquez sur + Nouveau, donnez un nom, choisissez le patron ECMA3 et le dossier de destination.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Patron">
-        <div class="carousel-text">
-          <span class="step">Etape 3</span>
-          <h3>Reglez les parametres</h3>
-          <p>Modifiez L, W, H, epaisseur, fermeture, marge de pli... Le patron se met a jour en temps reel.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Dessin">
-        <div class="carousel-text">
-          <span class="step">Etape 4</span>
-          <h3>Dessinez</h3>
-          <p>Plume, trait, rectangle, ellipse, crayon... Tous les outils vectoriels pour annoter et modifier votre trace.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Verrouillage">
-        <div class="carousel-text">
-          <span class="step">Etape 5</span>
-          <h3>Verrouillez</h3>
-          <p>Protegez vos patrons par mot de passe. Verrouillage calque dessin et parametres en un clic.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Organisation">
-        <div class="carousel-text">
-          <span class="step">Etape 6</span>
-          <h3>Organisez</h3>
-          <p>Creez des dossiers, renommez, supprimez par lots. Retrouvez rapidement vos creations.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Export">
-        <div class="carousel-text">
-          <span class="step">Etape 7</span>
-          <h3>Exportez</h3>
-          <p>Choisissez PDF ou EPS. Rendu vectoriel fidel, compatible avec tous les logiciels de PAO.</p>
-        </div>
-      </div>
-      <div class="carousel-slide">
-        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Raccourcis">
-        <div class="carousel-text">
-          <span class="step">Etape 8</span>
-          <h3>Gagnez du temps</h3>
-          <p>Raccourcis clavier V, P, M, L, N, C, Ctrl+Z... Travaillez plus vite.</p>
-        </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <img src="step1.png" alt="Interface">
+      <div class="body">
+        <span class="badge">Etape 1</span>
+        <h3>Lancez l'application</h3>
+        <p>L'interface s'ouvre sur l'atelier de trace technique : barre d'outils, panneau calques, zone de dessin et parametres a droite.</p>
       </div>
     </div>
-  </div>
-  <div class="carousel-dots">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
+    <div class="step-card">
+      <img src="step2.png" alt="Creation">
+      <div class="body">
+        <span class="badge">Etape 2</span>
+        <h3>Creez un nouveau trace</h3>
+        <p>Cliquez sur + Nouveau, donnez un nom, choisissez le patron ECMA3 et le dossier de destination.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <img src="step3.png" alt="Parametres">
+      <div class="body">
+        <span class="badge">Etape 3</span>
+        <h3>Reglez les parametres</h3>
+        <p>Modifiez L, W, H, epaisseur, fermeture, marge de pli... Le patron se met a jour en temps reel.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <img src="step4.png" alt="Dessin">
+      <div class="body">
+        <span class="badge">Etape 4</span>
+        <h3>Dessinez</h3>
+        <p>Plume, trait, rectangle, ellipse, crayon... Tous les outils vectoriels pour annoter et modifier votre trace.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <img src="step5.png" alt="Verrouillage">
+      <div class="body">
+        <span class="badge">Etape 5</span>
+        <h3>Verrouillez</h3>
+        <p>Protegez vos patrons par mot de passe. Verrouillage calque dessin et parametres en un clic.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <img src="step6.png" alt="Organisation">
+      <div class="body">
+        <span class="badge">Etape 6</span>
+        <h3>Organisez</h3>
+        <p>Creez des dossiers, renommez, supprimez par lots. Retrouvez rapidement vos creations.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <img src="step7.png" alt="Export">
+      <div class="body">
+        <span class="badge">Etape 7</span>
+        <h3>Exportez</h3>
+        <p>Choisissez PDF ou EPS. Rendu vectoriel fidel, compatible avec tous les logiciels de PAO.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <img src="step8.png" alt="Raccourcis">
+      <div class="body">
+        <span class="badge">Etape 8</span>
+        <h3>Gagnez du temps</h3>
+        <p>Raccourcis clavier V, P, M, L, N, C, Ctrl+Z... Travaillez plus vite.</p>
+      </div>
+    </div>
   </div>
 </section>
 
