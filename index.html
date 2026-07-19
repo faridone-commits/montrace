@@ -37,7 +37,11 @@
       text-align:center;padding:100px 20px 70px;position:relative;overflow:hidden;
       background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);color:#fff
     }
-    .hero img.logo{height:240px;margin-bottom:20px}
+    .hero .logos{
+      display:flex;align-items:center;justify-content:center;gap:30px;margin-bottom:20px;flex-wrap:wrap
+    }
+    .hero .logos img{height:200px;display:block}
+    .hero .logos img:first-child{height:180px}
     .hero h1{font-size:46px;font-weight:700;letter-spacing:-.5px}
     .hero h1 span{color:#e67e22}
     .hero p.tagline{
@@ -149,7 +153,8 @@
       header .center{width:100%;justify-content:center}
       header .right{display:none}
       .hero{padding:70px 16px 56px}
-      .hero img.logo{height:140px}
+      .hero .logos img{height:120px}
+      .hero .logos img:first-child{height:110px}
       .hero h1{font-size:28px}
       .hero p.tagline{font-size:15px}
       section{padding:56px 16px}
@@ -177,7 +182,10 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img src="symboltrace.png" alt="Montrace" class="logo">
+  <div class="logos">
+    <img src="symboltrace.png" alt="Montrace">
+    <img src="symboltraceetui.png" alt="Trace technique">
+  </div>
   <h1>Montrace<span>.</span></h1>
   <p class="tagline">
     Trace technique d'emballage vectoriel — Export PDF &bull; EPS &bull; Dessin integre &bull; Patrons normalises
