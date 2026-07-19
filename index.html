@@ -5,138 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Montrace — Tracé technique d'emballage</title>
   <style>
+    :root{
+      --bg:#f6f7f9;--surface:#fff;--text:#1e1e2a;--muted:#6b7280;
+      --primary:#1a1a2e;--accent:#e67e22;--accent-hover:#d35400;
+      --radius:16px;--shadow:0 1px 3px rgba(0,0,0,.04),0 8px 32px rgba(0,0,0,.06)
+    }
+    html{scroll-behavior:smooth}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:#f8f9fa;color:#222;line-height:1.6}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+      background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased
+    }
 
+    /* ── HEADER ── */
     header{
-      background:#1a1a2e;padding:14px 40px;display:flex;align-items:center;
-      justify-content:space-between;position:sticky;top:0;z-index:100;min-height:72px
+      background:rgba(26,26,46,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      padding:0 40px;display:flex;align-items:center;justify-content:space-between;
+      position:sticky;top:0;z-index:100;height:64px
     }
-    header img{height:144px}
+    header img{height:40px;transition:transform .3s}
+    header img:hover{transform:scale(1.04)}
+    header nav{display:flex;align-items:center;gap:6px}
     header nav a{
-      color:rgba(255,255,255,.7);text-decoration:none;margin-left:28px;font-size:14px;transition:color .2s
+      color:rgba(255,255,255,.65);text-decoration:none;padding:8px 16px;font-size:14px;
+      border-radius:8px;transition:color .2s,background .2s;font-weight:500
     }
-    header nav a:hover{color:#fff}
-    header nav a.cta{background:#e67e22;color:#fff;padding:8px 18px;border-radius:6px;font-weight:600}
+    header nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+    header nav a.cta{
+      background:var(--accent);color:#fff;padding:8px 20px;border-radius:8px;font-weight:600
+    }
+    header nav a.cta:hover{background:var(--accent-hover)}
 
+    /* ── HERO ── */
     .hero{
-      text-align:center;padding:100px 20px 60px;
-      background:linear-gradient(135deg,#1a1a2e 0,#16213e 50%,#0f3460 100%);color:#fff
+      text-align:center;padding:100px 20px 70px;
+      background:linear-gradient(160deg,#0f0f23 0,#1a1a2e 40%,#16213e 70%,#0f3460 100%);
+      color:#fff;position:relative;overflow:hidden
     }
-    .hero img.logo{height:420px;margin-bottom:28px}
-    .hero h1{font-size:48px;font-weight:800;letter-spacing:-1px}
-    .hero h1 span{color:#e67e22}
-    .hero p.tagline{font-size:20px;color:rgba(255,255,255,.7);margin:14px auto 36px;max-width:600px}
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse at 30% 40%,rgba(230,126,34,.08) 0,transparent 60%),
+                 radial-gradient(ellipse at 70% 60%,rgba(230,126,34,.05) 0,transparent 50%);
+      pointer-events:none
+    }
+    .hero img.logo{height:140px;margin-bottom:20px;filter:drop-shadow(0 4px 20px rgba(0,0,0,.3))}
+    .hero h1{font-size:52px;font-weight:800;letter-spacing:-1.5px;position:relative}
+    .hero h1 span{color:var(--accent)}
+    .hero p.tagline{
+      font-size:18px;color:rgba(255,255,255,.6);margin:12px auto 32px;max-width:560px;
+      line-height:1.7;position:relative
+    }
     .hero .btn{
-      display:inline-block;background:#e67e22;color:#fff;padding:14px 40px;border-radius:8px;
-      font-size:18px;font-weight:700;text-decoration:none;transition:background .2s,transform .1s
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--accent);color:#fff;padding:14px 44px;border-radius:50px;
+      font-size:16px;font-weight:600;text-decoration:none;
+      transition:background .25s,transform .2s,box-shadow .25s;position:relative
     }
-    .hero .btn:hover{background:#d35400;transform:translateY(-2px)}
+    .hero .btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,126,34,.35)}
     .hero-features{
-      display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:50px;padding:0 20px
+      display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:48px;padding:0 20px;position:relative
     }
     .hero-features span{
-      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
-      padding:8px 18px;border-radius:30px;font-size:13px;color:rgba(255,255,255,.9);white-space:nowrap
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+      padding:7px 18px;border-radius:50px;font-size:13px;color:rgba(255,255,255,.85);
+      white-space:nowrap;transition:background .2s,border-color .2s;font-weight:450
     }
+    .hero-features span:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
 
-    section{padding:80px 20px;max-width:1100px;margin:0 auto}
-    section h2{font-size:32px;text-align:center;margin-bottom:50px;color:#1a1a2e}
-    section h2::after{content:'';display:block;width:60px;height:3px;background:#e67e22;margin:12px auto 0;border-radius:2px}
+    /* ── SECTIONS ── */
+    section{padding:90px 24px;max-width:1100px;margin:0 auto}
+    section h2{
+      font-size:30px;text-align:center;margin-bottom:48px;color:var(--text);font-weight:700;
+      letter-spacing:-.5px
+    }
+    section h2::after{content:'';display:block;width:50px;height:4px;background:var(--accent);margin:14px auto 0;border-radius:4px}
 
-    /* ── TUTO ÉTAPES STATIQUE ── */
+    /* ── TUTO ÉTAPES ── */
     .steps-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:960px;margin:0 auto
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto
     }
     .step-card{
-      background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);
-      transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column
+      background:var(--surface);border-radius:var(--radius);overflow:hidden;
+      box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease;
+      display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04)
     }
-    .step-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
-    .step-card .img-wrap{overflow:hidden;cursor:pointer;position:relative}
-    .step-card .img-wrap img{width:100%;height:130px;object-fit:cover;display:block;transition:transform .4s ease}
-    .step-card .img-wrap:hover img{transform:scale(1.08)}
+    .step-card:hover{transform:translateY(-6px);box-shadow:0 12px 48px rgba(0,0,0,.1)}
+    .step-card .img-wrap{overflow:hidden;cursor:pointer;position:relative;background:#eaeef2}
+    .step-card .img-wrap img{
+      width:100%;height:140px;object-fit:cover;display:block;
+      transition:transform .5s cubic-bezier(.25,.46,.45,.94)
+    }
+    .step-card .img-wrap:hover img{transform:scale(1.1)}
     .step-card .img-wrap::after{
-      content:'';position:absolute;inset:0;background:rgba(0,0,0,.03);
-      opacity:0;transition:opacity .3s
+      content:'';
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.04));
+      opacity:0;transition:opacity .3s;pointer-events:none
     }
     .step-card .img-wrap:hover::after{opacity:1}
-    .step-card .body{padding:16px 20px 20px;flex:1;display:flex;flex-direction:column}
+    .step-card .body{padding:18px 22px 22px;flex:1;display:flex;flex-direction:column}
     .step-card .badge{
-      display:inline-block;background:#e67e22;color:#fff;padding:3px 12px;border-radius:20px;
-      font-size:11px;font-weight:700;margin-bottom:8px;align-self:flex-start
+      display:inline-flex;align-items:center;background:rgba(230,126,34,.12);color:var(--accent);
+      padding:2px 12px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:10px;
+      align-self:flex-start;letter-spacing:.3px
     }
-    .step-card h3{font-size:17px;color:#1a1a2e;margin-bottom:6px}
-    .step-card p{font-size:13px;color:#666;line-height:1.6;flex:1}
+    .step-card h3{font-size:16px;color:var(--text);margin-bottom:6px;font-weight:600}
+    .step-card p{font-size:13.5px;color:var(--muted);line-height:1.65;flex:1}
 
     /* ── LIGHTBOX ── */
-    .lightbox{display:none;position:fixed;z-index:300;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
-    .lightbox.show{display:flex}
-    .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 12px 60px rgba(0,0,0,.5)}
-    .lightbox .close-lb{position:absolute;top:20px;right:28px;font-size:36px;color:#fff;cursor:pointer;opacity:.7;transition:opacity .2s;font-weight:300;line-height:1}
-    .lightbox .close-lb:hover{opacity:1}
-
-    /* ── MOCKUP ── */
-    .mockup-area{text-align:center}
-    .mockup-area img{
-      max-width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.12);
-      max-height:600px;object-fit:contain;background:#fff
+    .lightbox{
+      display:none;position:fixed;z-index:300;inset:0;
+      background:rgba(0,0,0,.88);align-items:center;justify-content:center;
+      backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)
     }
+    .lightbox.show{display:flex}
+    .lightbox img{max-width:92vw;max-height:90vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+    .lightbox .close-lb{
+      position:absolute;top:24px;right:28px;width:44px;height:44px;display:flex;
+      align-items:center;justify-content:center;font-size:28px;color:#fff;cursor:pointer;
+      opacity:.6;transition:opacity .2s,transform .2s;background:rgba(255,255,255,.1);
+      border-radius:50%;line-height:1
+    }
+    .lightbox .close-lb:hover{opacity:1;transform:rotate(90deg);background:rgba(255,255,255,.18)}
 
     /* ── PRICING ── */
+    section#pricing{padding-top:60px;padding-bottom:60px}
     .pricing{
-      background:#fff;border-radius:16px;padding:50px 40px;
-      box-shadow:0 4px 30px rgba(0,0,0,.06);text-align:center;max-width:500px;margin:0 auto
+      background:var(--surface);border-radius:var(--radius);padding:48px 40px 44px;
+      box-shadow:var(--shadow);text-align:center;max-width:480px;margin:0 auto;
+      border:1px solid rgba(0,0,0,.04);position:relative;overflow:hidden
     }
-    .pricing .price{font-size:52px;font-weight:800;color:#1a1a2e}
-    .pricing .price span{font-size:20px;font-weight:400;color:#888}
-    .pricing .label{color:#888;font-size:14px;margin:4px 0 20px}
-    .pricing .includes{text-align:left;display:inline-block;margin:20px auto 30px}
-    .pricing .includes li{list-style:none;padding:6px 0;font-size:14px;color:#444}
-    .pricing .includes li::before{content:'\2713  ';color:#27ae60;font-weight:700}
-
+    .pricing::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--accent),#f39c12)
+    }
+    .pricing .price{font-size:56px;font-weight:800;color:var(--text);letter-spacing:-1.5px}
+    .pricing .price span{font-size:20px;font-weight:400;color:var(--muted)}
+    .pricing .label{color:var(--muted);font-size:14px;margin:6px 0 22px}
+    .pricing .includes{text-align:left;display:inline-block;margin:16px auto 28px}
+    .pricing .includes li{
+      list-style:none;padding:7px 0;font-size:14px;color:var(--text);
+      display:flex;align-items:center;gap:10px
+    }
+    .pricing .includes li::before{
+      content:'';display:inline-flex;width:20px;height:20px;flex-shrink:0;
+      background:#27ae60;border-radius:50%;align-items:center;justify-content:center;
+      font-size:12px;color:#fff;font-weight:700;line-height:20px;text-align:center
+    }
+    .pricing .includes li::before{content:'\2713'}
     .btn-pay{
-      display:inline-block;background:#27ae60;color:#fff;padding:14px 50px;border-radius:8px;
-      font-size:18px;font-weight:700;border:none;cursor:pointer;transition:background .2s,transform .1s
+      display:inline-flex;align-items:center;gap:8px;
+      background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:14px 52px;
+      border-radius:50px;font-size:16px;font-weight:600;border:none;cursor:pointer;
+      transition:transform .2s,box-shadow .25s;box-shadow:0 4px 20px rgba(39,174,96,.3)
     }
-    .btn-pay:hover{background:#1e8449;transform:translateY(-2px)}
+    .btn-pay:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(39,174,96,.4)}
 
     /* ── MODAL ── */
-    .modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.5);align-items:center;justify-content:center}
+    .modal{display:none;position:fixed;z-index:200;inset:0;background:rgba(0,0,0,.55);align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
     .modal.show{display:flex}
-    .modal-content{background:#fff;border-radius:16px;padding:40px;max-width:420px;width:90%;position:relative;text-align:center}
-    .modal-content .close{position:absolute;top:12px;right:18px;font-size:24px;cursor:pointer;color:#aaa}
-    .modal-content .close:hover{color:#333}
-    .modal-content h3{font-size:22px;margin-bottom:20px;color:#1a1a2e}
-    .modal-content .pay-method{margin:16px 0;padding:16px;background:#f8f9fa;border-radius:10px}
-    .modal-content .pay-method strong{display:block;font-size:13px;color:#888;margin-bottom:4px}
-    .modal-content .note{font-size:12px;color:#888;margin-top:16px;line-height:1.5}
+    .modal-content{
+      background:var(--surface);border-radius:var(--radius);padding:44px;max-width:420px;
+      width:92%;position:relative;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.2)
+    }
+    .modal-content .close{position:absolute;top:14px;right:18px;font-size:24px;cursor:pointer;color:#bbb;transition:color .2s}
+    .modal-content .close:hover{color:var(--text)}
+    .modal-content h3{font-size:22px;margin-bottom:18px;color:var(--text);font-weight:700}
+    .modal-content .pay-method{margin:14px 0;padding:18px;background:#f4f5f7;border-radius:12px}
+    .modal-content .pay-method strong{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    .modal-content .note{font-size:12px;color:var(--muted);margin-top:18px;line-height:1.5}
+
+    /* ── CONTACT ── */
+    section#contact{padding-top:50px;padding-bottom:70px}
+    #contact p:first-of-type{color:var(--muted);margin-bottom:22px;font-size:15px}
 
     /* ── FOOTER ── */
-    footer{text-align:center;padding:30px;font-size:13px;color:#999;border-top:1px solid #eee}
+    footer{text-align:center;padding:32px 20px;font-size:13px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
 
-    /* ── WHATSAPP ── */
+    /* ── WHATSAPP FLOAT ── */
     .wa-float{
-      position:fixed;bottom:24px;right:24px;z-index:150;width:56px;height:56px;
+      position:fixed;bottom:24px;right:24px;z-index:150;width:54px;height:54px;
       background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
-      box-shadow:0 4px 16px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;text-decoration:none
+      box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .25s,box-shadow .25s;text-decoration:none
     }
-    .wa-float:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(37,211,102,.5)}
-    .wa-float svg{width:28px;height:28px;fill:#fff}
+    .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.45)}
+    .wa-float svg{width:26px;height:26px;fill:#fff}
 
+    /* ── RESPONSIVE ── */
     @media(max-width:640px){
-      header{padding:12px 16px;flex-wrap:wrap;gap:10px}
-      header nav a{margin-left:12px;font-size:12px}
-      header nav a.cta{padding:6px 12px;font-size:12px}
-      .hero{padding:60px 16px 50px}
-      .hero h1{font-size:28px}
-      .hero p.tagline{font-size:16px}
-      .pricing{padding:30px 20px}
-      .pricing .price{font-size:38px}
-      section{padding:50px 16px}
+      header{padding:0 16px}
+      header img{height:32px}
+      header nav a{padding:6px 10px;font-size:12px}
+      header nav a.cta{padding:6px 14px;font-size:12px}
+      .hero{padding:70px 16px 56px}
+      .hero img.logo{height:90px}
+      .hero h1{font-size:30px}
+      .hero p.tagline{font-size:15px}
+      section{padding:60px 16px}
       section h2{font-size:24px}
       .steps-grid{grid-template-columns:1fr}
-      header img{height:80px}
+      .step-card .img-wrap img{height:120px}
+      .pricing{padding:36px 24px 32px}
+      .pricing .price{font-size:42px}
+      .wa-float{width:48px;height:48px;bottom:16px;right:16px}
+      .wa-float svg{width:22px;height:22px}
+      section#contact{padding-top:40px;padding-bottom:50px}
     }
   </style>
 </head>
