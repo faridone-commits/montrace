@@ -20,7 +20,7 @@
     header nav a.cta{background:#e67e22;color:#fff;padding:8px 18px;border-radius:6px;font-weight:600}
 
     .hero{
-      text-align:center;padding:100px 20px 80px;
+      text-align:center;padding:100px 20px 60px;
       background:linear-gradient(135deg,#1a1a2e 0,#16213e 50%,#0f3460 100%);color:#fff
     }
     .hero img.logo{height:420px;margin-bottom:28px}
@@ -32,23 +32,17 @@
       font-size:18px;font-weight:700;text-decoration:none;transition:background .2s,transform .1s
     }
     .hero .btn:hover{background:#d35400;transform:translateY(-2px)}
+    .hero-features{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:50px;padding:0 20px
+    }
+    .hero-features span{
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+      padding:8px 18px;border-radius:30px;font-size:13px;color:rgba(255,255,255,.9);white-space:nowrap
+    }
 
     section{padding:80px 20px;max-width:1100px;margin:0 auto}
     section h2{font-size:32px;text-align:center;margin-bottom:50px;color:#1a1a2e}
     section h2::after{content:'';display:block;width:60px;height:3px;background:#e67e22;margin:12px auto 0;border-radius:2px}
-
-    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px}
-    .feature{
-      background:#fff;border-radius:12px;padding:30px 24px;text-align:center;
-      box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s
-    }
-    .feature:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
-    .feature .icon{
-      width:56px;height:56px;margin:0 auto 16px;background:#fef3e9;border-radius:14px;
-      display:flex;align-items:center;justify-content:center;font-size:26px
-    }
-    .feature h3{font-size:17px;margin-bottom:8px;color:#1a1a2e}
-    .feature p{font-size:13px;color:#666}
 
     /* ── TUTO ÉTAPES STATIQUE ── */
     .steps-grid{
@@ -137,7 +131,6 @@
 <header>
   <img src="symboltrace.png" alt="Montrace">
   <nav>
-    <a href="#features">Fonctionnalites</a>
     <a href="#tuto">Tutoriel</a>
     <a href="#pricing">Tarif</a>
     <a href="#contact" class="cta">Acheter</a>
@@ -152,44 +145,14 @@
     Trace technique d'emballage vectoriel — Export PDF &bull; EPS &bull; Dessin integre &bull; Patrons normalises
   </p>
   <a href="#pricing" class="btn">Acquerir Montrace</a>
-</section>
-
-<!-- FEATURES -->
-<section id="features">
-  <h2>Fonctionnalites</h2>
-  <div class="features">
-    <div class="feature">
-      <div class="icon">&#9881;</div>
-      <h3>Patrons normalises</h3>
-      <p>ECMA3 avec parametres L, W, H, epaisseur, fermeture, marge de pli. Reglages en temps reel.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">&#9998;</div>
-      <h3>Outils de dessin</h3>
-      <p>Plume, trait, rectangle, ellipse, polygone, crayon, arc, cutter. Proprietes sur selection.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">&#128196;</div>
-      <h3>Export vectoriel</h3>
-      <p>PDF et EPS vectoriel, compatible PAO (Illustrator, InDesign). Rendu fidelle.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">&#128274;</div>
-      <h3>Verrouillage</h3>
-      <p>Protegez vos patrons par mot de passe. Verrouillage calque dessin et parametres.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">&#128193;</div>
-      <h3>Organisation</h3>
-      <p>Dossiers, renommage, suppression groupee. Retrouvez vos creations en un clic.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">&#9000;</div>
-      <h3>Raccourcis clavier</h3>
-      <p>V, P, M, L, N, C, Ctrl+Z... Tout l'atelier au bout des doigts.</p>
-    </div>
+  <div class="hero-features">
+    <span>&#9881; Patrons normalises ECMA3</span>
+    <span>&#9998; Outils de dessin vectoriel</span>
+    <span>&#128196; Export PDF/EPS</span>
+    <span>&#128274; Verrouillage</span>
+    <span>&#128193; Organisation dossiers</span>
+    <span>&#9000; Raccourcis clavier</span>
   </div>
-</section>
 
 <!-- TUTO ÉTAPES -->
 <section id="tuto">
