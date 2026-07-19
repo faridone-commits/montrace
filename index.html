@@ -53,14 +53,28 @@
       transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column
     }
     .step-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
-    .step-card img{width:100%;height:200px;object-fit:cover;display:block}
-    .step-card .body{padding:20px;flex:1;display:flex;flex-direction:column}
+    .step-card .img-wrap{overflow:hidden;cursor:pointer;position:relative}
+    .step-card .img-wrap img{width:100%;height:130px;object-fit:cover;display:block;transition:transform .4s ease}
+    .step-card .img-wrap:hover img{transform:scale(1.08)}
+    .step-card .img-wrap::after{
+      content:'';position:absolute;inset:0;background:rgba(0,0,0,.03);
+      opacity:0;transition:opacity .3s
+    }
+    .step-card .img-wrap:hover::after{opacity:1}
+    .step-card .body{padding:16px 20px 20px;flex:1;display:flex;flex-direction:column}
     .step-card .badge{
       display:inline-block;background:#e67e22;color:#fff;padding:3px 12px;border-radius:20px;
       font-size:11px;font-weight:700;margin-bottom:8px;align-self:flex-start
     }
     .step-card h3{font-size:17px;color:#1a1a2e;margin-bottom:6px}
     .step-card p{font-size:13px;color:#666;line-height:1.6;flex:1}
+
+    /* ── LIGHTBOX ── */
+    .lightbox{display:none;position:fixed;z-index:300;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.85);align-items:center;justify-content:center}
+    .lightbox.show{display:flex}
+    .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 12px 60px rgba(0,0,0,.5)}
+    .lightbox .close-lb{position:absolute;top:20px;right:28px;font-size:36px;color:#fff;cursor:pointer;opacity:.7;transition:opacity .2s;font-weight:300;line-height:1}
+    .lightbox .close-lb:hover{opacity:1}
 
     /* ── MOCKUP ── */
     .mockup-area{text-align:center}
@@ -159,7 +173,9 @@
   <h2>Comment ca marche</h2>
   <div class="steps-grid">
     <div class="step-card">
-      <img src="step1.png" alt="Interface">
+      <div class="img-wrap" onclick="openLightbox('step1.png')">
+        <img src="step1.png" alt="Interface">
+      </div>
       <div class="body">
         <span class="badge">Etape 1</span>
         <h3>Lancez l'application</h3>
@@ -167,7 +183,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step2.png" alt="Creation">
+      <div class="img-wrap" onclick="openLightbox('step2.png')">
+        <img src="step2.png" alt="Creation">
+      </div>
       <div class="body">
         <span class="badge">Etape 2</span>
         <h3>Creez un nouveau trace</h3>
@@ -175,7 +193,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step3.png" alt="Parametres">
+      <div class="img-wrap" onclick="openLightbox('step3.png')">
+        <img src="step3.png" alt="Parametres">
+      </div>
       <div class="body">
         <span class="badge">Etape 3</span>
         <h3>Reglez les parametres</h3>
@@ -183,7 +203,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step4.png" alt="Dessin">
+      <div class="img-wrap" onclick="openLightbox('step4.png')">
+        <img src="step4.png" alt="Dessin">
+      </div>
       <div class="body">
         <span class="badge">Etape 4</span>
         <h3>Dessinez</h3>
@@ -191,7 +213,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step5.png" alt="Verrouillage">
+      <div class="img-wrap" onclick="openLightbox('step5.png')">
+        <img src="step5.png" alt="Verrouillage">
+      </div>
       <div class="body">
         <span class="badge">Etape 5</span>
         <h3>Verrouillez</h3>
@@ -199,7 +223,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step6.png" alt="Organisation">
+      <div class="img-wrap" onclick="openLightbox('step6.png')">
+        <img src="step6.png" alt="Organisation">
+      </div>
       <div class="body">
         <span class="badge">Etape 6</span>
         <h3>Organisez</h3>
@@ -207,7 +233,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step7.png" alt="Export">
+      <div class="img-wrap" onclick="openLightbox('step7.png')">
+        <img src="step7.png" alt="Export">
+      </div>
       <div class="body">
         <span class="badge">Etape 7</span>
         <h3>Exportez</h3>
@@ -215,7 +243,9 @@
       </div>
     </div>
     <div class="step-card">
-      <img src="step8.png" alt="Raccourcis">
+      <div class="img-wrap" onclick="openLightbox('step8.png')">
+        <img src="step8.png" alt="Raccourcis">
+      </div>
       <div class="body">
         <span class="badge">Etape 8</span>
         <h3>Gagnez du temps</h3>
@@ -288,10 +318,33 @@
   &copy; 2026 Infographie trace technique &mdash; Montrace. Tous droits reserves.
 </footer>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="close-lb" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
 function openModal(){document.getElementById('payModal').classList.add('show')}
 function closeModal(){document.getElementById('payModal').classList.remove('show')}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
+
+function openLightbox(src){
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox').classList.add('show');
+  document.body.style.overflow='hidden'
+}
+function closeLightbox(e){
+  if(e&&e.target!==document.getElementById('lightbox')&&e.target!==document.querySelector('.close-lb'))return;
+  document.getElementById('lightbox').classList.remove('show');
+  document.body.style.overflow=''
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    var lb=document.getElementById('lightbox');
+    if(lb.classList.contains('show'))closeLightbox()
+  }
+})
 </script>
 </body>
 </html>
