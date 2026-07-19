@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Montrace — Tracé technique d'emballage</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:#f8f9fa;color:#222;line-height:1.6}
+
+    header{
+      background:#1a1a2e;padding:14px 40px;display:flex;align-items:center;
+      justify-content:space-between;position:sticky;top:0;z-index:100
+    }
+    header img{height:36px}
+    header nav a{
+      color:rgba(255,255,255,.7);text-decoration:none;margin-left:28px;font-size:14px;transition:color .2s
+    }
+    header nav a:hover{color:#fff}
+    header nav a.cta{background:#e67e22;color:#fff;padding:8px 18px;border-radius:6px;font-weight:600}
+
+    .hero{
+      text-align:center;padding:100px 20px 80px;
+      background:linear-gradient(135deg,#1a1a2e 0,#16213e 50%,#0f3460 100%);color:#fff
+    }
+    .hero img.logo{height:90px;margin-bottom:24px}
+    .hero h1{font-size:48px;font-weight:800;letter-spacing:-1px}
+    .hero h1 span{color:#e67e22}
+    .hero p.tagline{font-size:20px;color:rgba(255,255,255,.7);margin:14px auto 36px;max-width:600px}
+    .hero .btn{
+      display:inline-block;background:#e67e22;color:#fff;padding:14px 40px;border-radius:8px;
+      font-size:18px;font-weight:700;text-decoration:none;transition:background .2s,transform .1s
+    }
+    .hero .btn:hover{background:#d35400;transform:translateY(-2px)}
+
+    section{padding:80px 20px;max-width:1100px;margin:0 auto}
+    section h2{font-size:32px;text-align:center;margin-bottom:50px;color:#1a1a2e}
+    section h2::after{content:'';display:block;width:60px;height:3px;background:#e67e22;margin:12px auto 0;border-radius:2px}
+
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px}
+    .feature{
+      background:#fff;border-radius:12px;padding:30px 24px;text-align:center;
+      box-shadow:0 4px 20px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s
+    }
+    .feature:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .feature .icon{
+      width:56px;height:56px;margin:0 auto 16px;background:#fef3e9;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;font-size:26px
+    }
+    .feature h3{font-size:17px;margin-bottom:8px;color:#1a1a2e}
+    .feature p{font-size:13px;color:#666}
+
+    /* ── CAROUSEL / TUTO ANIMÉ ── */
+    .carousel{position:relative;max-width:800px;margin:0 auto;overflow:hidden;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.12)}
+    .carousel-track{display:flex;will-change:transform;animation:scroll 28s infinite}
+    .carousel-slide{min-width:100%;display:flex;align-items:center;background:#fff}
+    .carousel-slide img{width:55%;max-height:400px;object-fit:cover;display:block}
+    .carousel-text{padding:30px;width:45%;flex-shrink:0}
+    .carousel-text .step{
+      display:inline-block;background:#e67e22;color:#fff;padding:3px 12px;border-radius:20px;
+      font-size:11px;font-weight:700;margin-bottom:8px
+    }
+    .carousel-text h3{font-size:18px;color:#1a1a2e;margin-bottom:8px}
+    .carousel-text p{font-size:13px;color:#666;line-height:1.6}
+
+    @keyframes scroll{
+      0%,10%{transform:translateX(0)}
+      12.5%,22.5%{transform:translateX(-100%)}
+      25%,35%{transform:translateX(-200%)}
+      37.5%,47.5%{transform:translateX(-300%)}
+      50%,60%{transform:translateX(-400%)}
+      62.5%,72.5%{transform:translateX(-500%)}
+      75%,85%{transform:translateX(-600%)}
+      87.5%,97.5%{transform:translateX(-700%)}
+      100%{transform:translateX(0)}
+    }
+
+    .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+    .carousel-dots span{
+      width:10px;height:10px;border-radius:50%;background:#ccc;animation:dot 28s infinite
+    }
+    .carousel-dots span:nth-child(1){animation-delay:0s}
+    .carousel-dots span:nth-child(2){animation-delay:3.5s}
+    .carousel-dots span:nth-child(3){animation-delay:7s}
+    .carousel-dots span:nth-child(4){animation-delay:10.5s}
+    .carousel-dots span:nth-child(5){animation-delay:14s}
+    .carousel-dots span:nth-child(6){animation-delay:17.5s}
+    .carousel-dots span:nth-child(7){animation-delay:21s}
+    .carousel-dots span:nth-child(8){animation-delay:24.5s}
+    @keyframes dot{
+      0%,10%{background:#e67e22;transform:scale(1.3)}
+      12.5%,100%{background:#ccc;transform:scale(1)}
+    }
+
+    /* ── MOCKUP ── */
+    .mockup-area{text-align:center}
+    .mockup-area img{
+      max-width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.12);
+      max-height:600px;object-fit:contain;background:#fff
+    }
+
+    /* ── PRICING ── */
+    .pricing{
+      background:#fff;border-radius:16px;padding:50px 40px;
+      box-shadow:0 4px 30px rgba(0,0,0,.06);text-align:center;max-width:500px;margin:0 auto
+    }
+    .pricing .price{font-size:52px;font-weight:800;color:#1a1a2e}
+    .pricing .price span{font-size:20px;font-weight:400;color:#888}
+    .pricing .label{color:#888;font-size:14px;margin:4px 0 20px}
+    .pricing .includes{text-align:left;display:inline-block;margin:20px auto 30px}
+    .pricing .includes li{list-style:none;padding:6px 0;font-size:14px;color:#444}
+    .pricing .includes li::before{content:'\2713  ';color:#27ae60;font-weight:700}
+
+    .btn-pay{
+      display:inline-block;background:#27ae60;color:#fff;padding:14px 50px;border-radius:8px;
+      font-size:18px;font-weight:700;border:none;cursor:pointer;transition:background .2s,transform .1s
+    }
+    .btn-pay:hover{background:#1e8449;transform:translateY(-2px)}
+
+    /* ── MODAL ── */
+    .modal{display:none;position:fixed;z-index:200;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.5);align-items:center;justify-content:center}
+    .modal.show{display:flex}
+    .modal-content{background:#fff;border-radius:16px;padding:40px;max-width:420px;width:90%;position:relative;text-align:center}
+    .modal-content .close{position:absolute;top:12px;right:18px;font-size:24px;cursor:pointer;color:#aaa}
+    .modal-content .close:hover{color:#333}
+    .modal-content h3{font-size:22px;margin-bottom:20px;color:#1a1a2e}
+    .modal-content .pay-method{margin:16px 0;padding:16px;background:#f8f9fa;border-radius:10px}
+    .modal-content .pay-method strong{display:block;font-size:13px;color:#888;margin-bottom:4px}
+    .modal-content .note{font-size:12px;color:#888;margin-top:16px;line-height:1.5}
+
+    /* ── FOOTER ── */
+    footer{text-align:center;padding:30px;font-size:13px;color:#999;border-top:1px solid #eee}
+
+    /* ── WHATSAPP ── */
+    .wa-float{
+      position:fixed;bottom:24px;right:24px;z-index:150;width:56px;height:56px;
+      background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      box-shadow:0 4px 16px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s;text-decoration:none
+    }
+    .wa-float:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(37,211,102,.5)}
+    .wa-float svg{width:28px;height:28px;fill:#fff}
+
+    @media(max-width:640px){
+      header{padding:12px 16px;flex-wrap:wrap;gap:10px}
+      header nav a{margin-left:12px;font-size:12px}
+      header nav a.cta{padding:6px 12px;font-size:12px}
+      .hero{padding:60px 16px 50px}
+      .hero h1{font-size:28px}
+      .hero p.tagline{font-size:16px}
+      .pricing{padding:30px 20px}
+      .pricing .price{font-size:38px}
+      section{padding:50px 16px}
+      section h2{font-size:24px}
+      .carousel-slide{flex-direction:column}
+      .carousel-slide img{width:100%;max-height:220px}
+      .carousel-text{width:100%;padding:20px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="symboltrace.png" alt="Montrace">
+  <nav>
+    <a href="#features">Fonctionnalites</a>
+    <a href="#tuto">Tutoriel</a>
+    <a href="#pricing">Tarif</a>
+    <a href="#contact" class="cta">Acheter</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="symboltrace.png" alt="Montrace" class="logo">
+  <h1>Montrace<span>.</span></h1>
+  <p class="tagline">
+    Trace technique d'emballage vectoriel — Export PDF &bull; EPS &bull; Dessin integre &bull; Patrons normalises
+  </p>
+  <a href="#pricing" class="btn">Acquerir Montrace</a>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <h2>Fonctionnalites</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">&#9881;</div>
+      <h3>Patrons normalises</h3>
+      <p>ECMA3 avec parametres L, W, H, epaisseur, fermeture, marge de pli. Reglages en temps reel.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">&#9998;</div>
+      <h3>Outils de dessin</h3>
+      <p>Plume, trait, rectangle, ellipse, polygone, crayon, arc, cutter. Proprietes sur selection.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">&#128196;</div>
+      <h3>Export vectoriel</h3>
+      <p>PDF et EPS vectoriel, compatible PAO (Illustrator, InDesign). Rendu fidelle.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">&#128274;</div>
+      <h3>Verrouillage</h3>
+      <p>Protegez vos patrons par mot de passe. Verrouillage calque dessin et parametres.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">&#128193;</div>
+      <h3>Organisation</h3>
+      <p>Dossiers, renommage, suppression groupee. Retrouvez vos creations en un clic.</p>
+    </div>
+    <div class="feature">
+      <div class="icon">&#9000;</div>
+      <h3>Raccourcis clavier</h3>
+      <p>V, P, M, L, N, C, Ctrl+Z... Tout l'atelier au bout des doigts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIEL ANIME -->
+<section id="tuto">
+  <h2>Comment ca marche</h2>
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Interface">
+        <div class="carousel-text">
+          <span class="step">Etape 1</span>
+          <h3>Lancez l'application</h3>
+          <p>L'interface s'ouvre sur l'atelier de trace technique : barre d'outils, panneau calques, zone de dessin et parametres a droite.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Creation">
+        <div class="carousel-text">
+          <span class="step">Etape 2</span>
+          <h3>Creez un nouveau trace</h3>
+          <p>Cliquez sur + Nouveau, donnez un nom, choisissez le patron ECMA3 et le dossier de destination.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Patron">
+        <div class="carousel-text">
+          <span class="step">Etape 3</span>
+          <h3>Reglez les parametres</h3>
+          <p>Modifiez L, W, H, epaisseur, fermeture, marge de pli... Le patron se met a jour en temps reel.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Dessin">
+        <div class="carousel-text">
+          <span class="step">Etape 4</span>
+          <h3>Dessinez</h3>
+          <p>Plume, trait, rectangle, ellipse, crayon... Tous les outils vectoriels pour annoter et modifier votre trace.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Verrouillage">
+        <div class="carousel-text">
+          <span class="step">Etape 5</span>
+          <h3>Verrouillez</h3>
+          <p>Protegez vos patrons par mot de passe. Verrouillage calque dessin et parametres en un clic.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Organisation">
+        <div class="carousel-text">
+          <span class="step">Etape 6</span>
+          <h3>Organisez</h3>
+          <p>Creez des dossiers, renommez, supprimez par lots. Retrouvez rapidement vos creations.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Export">
+        <div class="carousel-text">
+          <span class="step">Etape 7</span>
+          <h3>Exportez</h3>
+          <p>Choisissez PDF ou EPS. Rendu vectoriel fidel, compatible avec tous les logiciels de PAO.</p>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <img src="Capture d'écran 2026-06-13 à 04.06.10.png" alt="Raccourcis">
+        <div class="carousel-text">
+          <span class="step">Etape 8</span>
+          <h3>Gagnez du temps</h3>
+          <p>Raccourcis clavier V, P, M, L, N, C, Ctrl+Z... Travaillez plus vite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-dots">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <h2>Tarif</h2>
+  <div class="pricing">
+    <div class="price">30 <span>EUR</span></div>
+    <div class="label">Licence permanente &bull; Mac + Windows</div>
+    <ul class="includes">
+      <li>Application Montrace complete</li>
+      <li>Export PDF / EPS vectoriel</li>
+      <li>Patrons ECMA3 paramétrables</li>
+      <li>Outils de dessin vectoriel</li>
+      <li>Verrouillage par mot de passe</li>
+      <li>Mises a jour incluses</li>
+    </ul>
+    <button class="btn-pay" onclick="openModal()">Acheter maintenant</button>
+  </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div id="payModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Paiement securise</h3>
+    <p style="font-size:13px;color:#666;margin-bottom:20px;">Prix : <strong>30 EUR</strong> — Licence permanente Mac + Windows.</p>
+    <div class="pay-method">
+      <strong>Paiement par Payhip</strong>
+      <p style="font-size:13px;color:#555;margin:8px 0;">Carte bancaire, PayPal &amp; plus. Paiement en EUR. Livraison instantanee.</p>
+      <a href="https://payhip.com/b/aDl58" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#1a1a2e;color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-size:15px;font-weight:600;margin-top:6px;">
+        <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+        Acheter sur Payhip
+      </a>
+    </div>
+    <div class="pay-method">
+      <strong>Contact</strong>
+      <p style="font-size:13px;color:#555;margin:6px 0;">Une question ? Contactez-nous directement.</p>
+      <a href="https://wa.me/213XXXXXXXXX" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:10px 24px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:600;margin-top:4px;">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+        Nous contacter
+      </a>
+    </div>
+    <p class="note">Telechargement immediat apres paiement.</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="text-align:center;padding:40px 20px 60px;">
+  <h2>Contact</h2>
+  <p style="color:#666;margin-bottom:20px;">Une question ? Besoin d'une assistance ?</p>
+  <a href="https://wa.me/213XXXXXXXXX" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 36px;border-radius:8px;text-decoration:none;font-size:16px;font-weight:600;">
+    <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+    Contacter par WhatsApp
+  </a>
+</section>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/213XXXXXXXXX" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+</a>
+
+<footer>
+  &copy; 2026 Farid BENMANSOUR &amp; Amine Mohamed ARIB &mdash; Montrace. Tous droits reserves.
+</footer>
+
+<script>
+function openModal(){document.getElementById('payModal').classList.add('show')}
+function closeModal(){document.getElementById('payModal').classList.remove('show')}
+document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
+</script>
+</body>
+</html>
