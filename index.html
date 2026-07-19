@@ -348,6 +348,9 @@
 </div>
 
 <script>
+if('scrollRestoration'in history)history.scrollRestoration='manual'
+window.scrollTo(0,0)
+
 function openModal(){document.getElementById('payModal').classList.add('show')}
 function closeModal(){document.getElementById('payModal').classList.remove('show')}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closeModal()})
