@@ -5,211 +5,178 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Montrace — Tracé technique d'emballage</title>
   <style>
-    :root{
-      --bg:#f6f7f9;--surface:#fff;--text:#1e1e2a;--muted:#6b7280;
-      --primary:#1a1a2e;--accent:#e67e22;--accent-hover:#d35400;
-      --radius:16px;--shadow:0 1px 3px rgba(0,0,0,.04),0 8px 32px rgba(0,0,0,.06)
-    }
-    html{scroll-behavior:smooth}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
     body{
       font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-      background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased
+      background:#f7f5f2;color:#2d2a24;line-height:1.7;-webkit-font-smoothing:antialiased
     }
 
     /* ── HEADER ── */
     header{
-      background:rgba(26,26,46,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      padding:0 40px;display:flex;align-items:center;justify-content:space-between;
-      position:sticky;top:0;z-index:100;height:64px
+      background:#1c1a16;padding:0 48px;display:flex;align-items:center;
+      justify-content:space-between;position:sticky;top:0;z-index:100;height:60px
     }
-    header img{height:40px;transition:transform .3s}
-    header img:hover{transform:scale(1.04)}
-    header nav{display:flex;align-items:center;gap:6px}
+    header img{height:32px;opacity:.92}
+    header nav{display:flex;align-items:center;gap:4px}
     header nav a{
-      color:rgba(255,255,255,.65);text-decoration:none;padding:8px 16px;font-size:14px;
-      border-radius:8px;transition:color .2s,background .2s;font-weight:500
+      color:rgba(255,255,255,.55);text-decoration:none;padding:7px 14px;font-size:13px;
+      border-radius:6px;transition:color .2s,background .2s;font-weight:500;letter-spacing:.2px
     }
-    header nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
-    header nav a.cta{
-      background:var(--accent);color:#fff;padding:8px 20px;border-radius:8px;font-weight:600
-    }
-    header nav a.cta:hover{background:var(--accent-hover)}
+    header nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+    header nav a.cta{background:#d4874a;color:#fff}
+    header nav a.cta:hover{background:#c0753a}
 
     /* ── HERO ── */
     .hero{
-      text-align:center;padding:100px 20px 70px;
-      background:linear-gradient(160deg,#0f0f23 0,#1a1a2e 40%,#16213e 70%,#0f3460 100%);
-      color:#fff;position:relative;overflow:hidden
+      text-align:center;padding:110px 20px 70px;position:relative;overflow:hidden;
+      background:#1c1a16;color:#fff
     }
     .hero::before{
       content:'';position:absolute;inset:0;
-      background:radial-gradient(ellipse at 30% 40%,rgba(230,126,34,.08) 0,transparent 60%),
-                 radial-gradient(ellipse at 70% 60%,rgba(230,126,34,.05) 0,transparent 50%);
+      background:radial-gradient(ellipse 600px 400px at 50% 30%,rgba(212,135,74,.12),transparent);
       pointer-events:none
     }
-    .hero img.logo{height:140px;margin-bottom:20px;filter:drop-shadow(0 4px 20px rgba(0,0,0,.3))}
-    .hero h1{font-size:52px;font-weight:800;letter-spacing:-1.5px;position:relative}
-    .hero h1 span{color:var(--accent)}
+    .hero img.logo{height:120px;margin-bottom:16px}
+    .hero h1{
+      font-size:44px;font-weight:300;letter-spacing:2px;position:relative;
+      font-family:Georgia,'Times New Roman',serif
+    }
+    .hero h1 span{font-weight:700;color:#d4874a;letter-spacing:0}
     .hero p.tagline{
-      font-size:18px;color:rgba(255,255,255,.6);margin:12px auto 32px;max-width:560px;
-      line-height:1.7;position:relative
+      font-size:15px;color:rgba(255,255,255,.5);margin:10px auto 30px;max-width:520px;
+      line-height:1.8;font-weight:400;letter-spacing:.3px;position:relative
     }
     .hero .btn{
-      display:inline-flex;align-items:center;gap:8px;
-      background:var(--accent);color:#fff;padding:14px 44px;border-radius:50px;
-      font-size:16px;font-weight:600;text-decoration:none;
-      transition:background .25s,transform .2s,box-shadow .25s;position:relative
+      display:inline-flex;align-items:center;
+      background:transparent;color:#fff;padding:11px 36px;border-radius:0;
+      font-size:13px;font-weight:600;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;
+      border:1px solid rgba(255,255,255,.25);transition:background .3s,border-color .3s;position:relative
     }
-    .hero .btn:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,126,34,.35)}
+    .hero .btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4)}
     .hero-features{
-      display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:48px;padding:0 20px;position:relative
+      display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:44px;padding:0 20px;position:relative
     }
     .hero-features span{
-      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
-      padding:7px 18px;border-radius:50px;font-size:13px;color:rgba(255,255,255,.85);
-      white-space:nowrap;transition:background .2s,border-color .2s;font-weight:450
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+      padding:5px 16px;border-radius:0;font-size:12px;color:rgba(255,255,255,.7);
+      white-space:nowrap;transition:background .25s;letter-spacing:.3px
     }
-    .hero-features span:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
+    .hero-features span:hover{background:rgba(255,255,255,.1)}
 
     /* ── SECTIONS ── */
-    section{padding:90px 24px;max-width:1100px;margin:0 auto}
+    section{padding:80px 24px;max-width:1040px;margin:0 auto}
     section h2{
-      font-size:30px;text-align:center;margin-bottom:48px;color:var(--text);font-weight:700;
-      letter-spacing:-.5px
+      font-size:24px;text-align:center;margin-bottom:44px;color:#2d2a24;
+      font-weight:400;letter-spacing:1.5px;text-transform:uppercase;font-family:Georgia,'Times New Roman',serif
     }
-    section h2::after{content:'';display:block;width:50px;height:4px;background:var(--accent);margin:14px auto 0;border-radius:4px}
 
     /* ── TUTO ÉTAPES ── */
     .steps-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:960px;margin:0 auto
+      display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;max-width:1000px;margin:0 auto
     }
     .step-card{
-      background:var(--surface);border-radius:var(--radius);overflow:hidden;
-      box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease;
-      display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04)
+      background:#fff;border-radius:0;overflow:hidden;transition:transform .3s,box-shadow .3s;
+      display:flex;flex-direction:column;border:1px solid #eeebe7
     }
-    .step-card:hover{transform:translateY(-6px);box-shadow:0 12px 48px rgba(0,0,0,.1)}
-    .step-card .img-wrap{overflow:hidden;cursor:pointer;position:relative;background:#eaeef2}
+    .step-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.07)}
+    .step-card .img-wrap{overflow:hidden;cursor:pointer;position:relative}
     .step-card .img-wrap img{
-      width:100%;height:140px;object-fit:cover;display:block;
-      transition:transform .5s cubic-bezier(.25,.46,.45,.94)
+      width:100%;height:110px;object-fit:cover;display:block;
+      transition:transform .5s;filter:grayscale(.15)
     }
-    .step-card .img-wrap:hover img{transform:scale(1.1)}
-    .step-card .img-wrap::after{
-      content:'';
-      position:absolute;inset:0;
-      background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.04));
-      opacity:0;transition:opacity .3s;pointer-events:none
-    }
-    .step-card .img-wrap:hover::after{opacity:1}
-    .step-card .body{padding:18px 22px 22px;flex:1;display:flex;flex-direction:column}
+    .step-card .img-wrap:hover img{transform:scale(1.12);filter:grayscale(0)}
+    .step-card .body{padding:14px 16px 18px;flex:1;display:flex;flex-direction:column}
     .step-card .badge{
-      display:inline-flex;align-items:center;background:rgba(230,126,34,.12);color:var(--accent);
-      padding:2px 12px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:10px;
-      align-self:flex-start;letter-spacing:.3px
+      display:inline-block;color:#d4874a;font-size:10px;font-weight:700;margin-bottom:6px;
+      letter-spacing:1.2px;text-transform:uppercase;font-family:Georgia,'Times New Roman',serif
     }
-    .step-card h3{font-size:16px;color:var(--text);margin-bottom:6px;font-weight:600}
-    .step-card p{font-size:13.5px;color:var(--muted);line-height:1.65;flex:1}
+    .step-card h3{font-size:14px;color:#2d2a24;margin-bottom:4px;font-weight:600}
+    .step-card p{font-size:12.5px;color:#8a8580;line-height:1.6;flex:1}
 
     /* ── LIGHTBOX ── */
     .lightbox{
       display:none;position:fixed;z-index:300;inset:0;
-      background:rgba(0,0,0,.88);align-items:center;justify-content:center;
-      backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)
+      background:rgba(28,26,22,.92);align-items:center;justify-content:center
     }
     .lightbox.show{display:flex}
-    .lightbox img{max-width:92vw;max-height:90vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.6)}
-    .lightbox .close-lb{
-      position:absolute;top:24px;right:28px;width:44px;height:44px;display:flex;
-      align-items:center;justify-content:center;font-size:28px;color:#fff;cursor:pointer;
-      opacity:.6;transition:opacity .2s,transform .2s;background:rgba(255,255,255,.1);
-      border-radius:50%;line-height:1
+    .lightbox img{
+      max-width:90vw;max-height:88vh;
+      box-shadow:0 20px 60px rgba(0,0,0,.5)
     }
-    .lightbox .close-lb:hover{opacity:1;transform:rotate(90deg);background:rgba(255,255,255,.18)}
+    .lightbox .close-lb{
+      position:absolute;top:20px;right:24px;font-size:32px;color:#fff;
+      cursor:pointer;opacity:.5;transition:opacity .25s;font-weight:300;line-height:1;
+      font-family:Georgia,serif
+    }
+    .lightbox .close-lb:hover{opacity:1}
 
     /* ── PRICING ── */
-    section#pricing{padding-top:60px;padding-bottom:60px}
     .pricing{
-      background:var(--surface);border-radius:var(--radius);padding:48px 40px 44px;
-      box-shadow:var(--shadow);text-align:center;max-width:480px;margin:0 auto;
-      border:1px solid rgba(0,0,0,.04);position:relative;overflow:hidden
+      background:#fff;padding:48px 40px 44px;box-shadow:none;text-align:center;
+      max-width:460px;margin:0 auto;border:1px solid #eeebe7
     }
-    .pricing::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:4px;
-      background:linear-gradient(90deg,var(--accent),#f39c12)
-    }
-    .pricing .price{font-size:56px;font-weight:800;color:var(--text);letter-spacing:-1.5px}
-    .pricing .price span{font-size:20px;font-weight:400;color:var(--muted)}
-    .pricing .label{color:var(--muted);font-size:14px;margin:6px 0 22px}
+    .pricing .price{font-size:50px;font-weight:300;color:#2d2a24;letter-spacing:0}
+    .pricing .price span{font-size:16px;font-weight:400;color:#8a8580}
+    .pricing .label{color:#8a8580;font-size:13px;margin:4px 0 20px}
     .pricing .includes{text-align:left;display:inline-block;margin:16px auto 28px}
     .pricing .includes li{
-      list-style:none;padding:7px 0;font-size:14px;color:var(--text);
-      display:flex;align-items:center;gap:10px
+      list-style:none;padding:6px 0;font-size:13.5px;color:#2d2a24
     }
-    .pricing .includes li::before{
-      content:'';display:inline-flex;width:20px;height:20px;flex-shrink:0;
-      background:#27ae60;border-radius:50%;align-items:center;justify-content:center;
-      font-size:12px;color:#fff;font-weight:700;line-height:20px;text-align:center
-    }
-    .pricing .includes li::before{content:'\2713'}
+    .pricing .includes li::before{content:'\2713  ';color:#d4874a;font-weight:700}
     .btn-pay{
-      display:inline-flex;align-items:center;gap:8px;
-      background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;padding:14px 52px;
-      border-radius:50px;font-size:16px;font-weight:600;border:none;cursor:pointer;
-      transition:transform .2s,box-shadow .25s;box-shadow:0 4px 20px rgba(39,174,96,.3)
+      display:inline-flex;align-items:center;gap:6px;
+      background:#2d2a24;color:#fff;padding:12px 44px;border-radius:0;
+      font-size:13px;font-weight:600;border:none;cursor:pointer;letter-spacing:1.2px;
+      text-transform:uppercase;transition:background .25s
     }
-    .btn-pay:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(39,174,96,.4)}
+    .btn-pay:hover{background:#d4874a}
 
     /* ── MODAL ── */
-    .modal{display:none;position:fixed;z-index:200;inset:0;background:rgba(0,0,0,.55);align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+    .modal{display:none;position:fixed;z-index:200;inset:0;background:rgba(28,26,22,.6);align-items:center;justify-content:center}
     .modal.show{display:flex}
     .modal-content{
-      background:var(--surface);border-radius:var(--radius);padding:44px;max-width:420px;
-      width:92%;position:relative;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.2)
+      background:#fff;padding:40px;max-width:400px;width:90%;position:relative;text-align:center
     }
-    .modal-content .close{position:absolute;top:14px;right:18px;font-size:24px;cursor:pointer;color:#bbb;transition:color .2s}
-    .modal-content .close:hover{color:var(--text)}
-    .modal-content h3{font-size:22px;margin-bottom:18px;color:var(--text);font-weight:700}
-    .modal-content .pay-method{margin:14px 0;padding:18px;background:#f4f5f7;border-radius:12px}
-    .modal-content .pay-method strong{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-    .modal-content .note{font-size:12px;color:var(--muted);margin-top:18px;line-height:1.5}
+    .modal-content .close{position:absolute;top:12px;right:16px;font-size:24px;cursor:pointer;color:#bbb;transition:color .2s}
+    .modal-content .close:hover{color:#2d2a24}
+    .modal-content h3{font-size:20px;margin-bottom:16px;color:#2d2a24;font-weight:400;letter-spacing:.5px}
+    .modal-content .pay-method{margin:14px 0;padding:16px;background:#f7f5f2}
+    .modal-content .pay-method strong{display:block;font-size:12px;color:#8a8580;margin-bottom:4px;text-transform:uppercase;letter-spacing:.8px}
+    .modal-content .note{font-size:12px;color:#8a8580;margin-top:16px}
 
     /* ── CONTACT ── */
-    section#contact{padding-top:50px;padding-bottom:70px}
-    #contact p:first-of-type{color:var(--muted);margin-bottom:22px;font-size:15px}
+    #contact p:first-of-type{color:#8a8580;margin-bottom:20px;font-size:14px}
 
     /* ── FOOTER ── */
-    footer{text-align:center;padding:32px 20px;font-size:13px;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+    footer{text-align:center;padding:28px 20px;font-size:12px;color:#8a8580;border-top:1px solid #eeebe7;letter-spacing:.3px}
 
-    /* ── WHATSAPP FLOAT ── */
+    /* ── WHATSAPP ── */
     .wa-float{
-      position:fixed;bottom:24px;right:24px;z-index:150;width:54px;height:54px;
+      position:fixed;bottom:24px;right:24px;z-index:150;width:48px;height:48px;
       background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
-      box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .25s,box-shadow .25s;text-decoration:none
+      box-shadow:0 4px 16px rgba(37,211,102,.3);transition:transform .25s;text-decoration:none
     }
-    .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.45)}
-    .wa-float svg{width:26px;height:26px;fill:#fff}
+    .wa-float:hover{transform:scale(1.08)}
+    .wa-float svg{width:22px;height:22px;fill:#fff}
 
     /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      .steps-grid{grid-template-columns:1fr 1fr}
+    }
     @media(max-width:640px){
       header{padding:0 16px}
-      header img{height:32px}
-      header nav a{padding:6px 10px;font-size:12px}
-      header nav a.cta{padding:6px 14px;font-size:12px}
-      .hero{padding:70px 16px 56px}
-      .hero img.logo{height:90px}
+      header nav a{padding:5px 8px;font-size:11px}
+      .hero{padding:80px 16px 56px}
+      .hero img.logo{height:80px}
       .hero h1{font-size:30px}
-      .hero p.tagline{font-size:15px}
-      section{padding:60px 16px}
-      section h2{font-size:24px}
+      .hero p.tagline{font-size:14px}
+      section{padding:56px 16px}
+      section h2{font-size:20px}
       .steps-grid{grid-template-columns:1fr}
-      .step-card .img-wrap img{height:120px}
+      .step-card .img-wrap img{height:100px}
       .pricing{padding:36px 24px 32px}
-      .pricing .price{font-size:42px}
-      .wa-float{width:48px;height:48px;bottom:16px;right:16px}
-      .wa-float svg{width:22px;height:22px}
-      section#contact{padding-top:40px;padding-bottom:50px}
+      .pricing .price{font-size:36px}
     }
   </style>
 </head>
